@@ -25,7 +25,7 @@
                 var cnfPass = $('#cnfPassword').val();
                 $.ajax({
                     type: "POST",
-                    url: "Server/Register.php",
+                    url: "http://tcts.saadsurya.com/Server/Register.php",
                     data: { UserName: un, Email: email, Password: pass }
                 }).success(function (result) {
                     if (result == 1) { alert('Registered Successfully!'); window.location = 'Index.html';}
