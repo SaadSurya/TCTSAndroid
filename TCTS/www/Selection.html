@@ -38,7 +38,8 @@
                 var routeName = $('routeName').val();
                 $.ajax({
                     type: "POST",
-                    url: "http://tcts.saadsurya.com/Server/SaveRoute.php",
+                    url: "Server/SaveRoute.php",
+                    //url: "http://tcts.saadsurya.com/Server/SaveRoute.php",
                     data: { UserName: userName, RouteName: routeName, xmlStr: xmlStr }
                 }).success(function (result) {
                     if (result == 'True') { alert('Saved Successfully!');}

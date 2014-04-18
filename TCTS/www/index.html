@@ -23,7 +23,8 @@
                 var pass = $('#password').val();
                 $.ajax({
                     type: "POST",
-                    url: "http://tcts.saadsurya.com/Server/Login.php",
+                    url: "Server/Login.php",
+                    //url: "http://tcts.saadsurya.com/Server/Login.php",
                     data: { UserName: un, Password: pass }
                 }).success(function (result) {
                     if (result == 'True') { localStorage['userName'] = un; window.location = "Search.html"}
