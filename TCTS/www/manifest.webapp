@@ -1,0 +1,5 @@
+"permissions": {
+    "desktop-notification": {
+        "description": "Describe why you need to enable notifications"
+    }
+}

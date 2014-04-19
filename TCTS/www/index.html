@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico">
 
     <title>Signin</title>
-
+        <link rel="stylesheet" type="text/css" href="css/notification.css" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/signin.css" rel="stylesheet">
@@ -28,8 +28,11 @@
                     data: { UserName: un, Password: pass }
                 }).success(function (result) {
                     if (result == 'True') { localStorage['userName'] = un; window.location = "Search.html"}
-                    else { alert('Login Failed!'); }
+                    else { navigator.notification.alert('Login Failed!', reset()); }
                 });
+            }
+            function reset(){
+                $('#password').val('');
             }
         </script>
   </head>
