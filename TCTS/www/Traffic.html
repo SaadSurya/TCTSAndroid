@@ -46,8 +46,8 @@
         function getData(time) {
             $.ajax({
                 type: "POST",
-                url: "Server/FetchTraffic.php",
-                //url: "http://tcts.saadsurya.com/Server/FetchTraffic.php",
+                //url: "Server/FetchTraffic.php",
+                url: "http://tcts.saadsurya.com/Server/FetchTraffic.php",
                 data: { time: time, xmlStr: xmlStr }
             }).success(function (result) {
                 displayLines(result);
