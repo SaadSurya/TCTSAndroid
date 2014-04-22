@@ -41,7 +41,22 @@
 
         var lastColor;
         var xmlStr;
-
+        
+        function getDataByRouteId(routeId, time) {
+            $.ajax({
+                type: "GET",
+                //url: "Server/FetchTraffic.php",
+                url: "http://tcts.saadsurya.com/Server/FetchTrafficr.php",
+                data: { time: time, routeId: routeId },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(textStatus);
+                    
+                }
+            }).complete(function (result) {
+                displayLines(result.responseText);
+            });
+            
+        }
         
         function getData(time) {
             $.ajax({
@@ -49,9 +64,12 @@
                 //url: "Server/FetchTraffic.php",
                 url: "http://tcts.saadsurya.com/Server/FetchTraffic.php",
                 data: { time: time, xmlStr: xmlStr }
-            }).success(function (result) {
-                displayLines(result);
+            }).complete(function (result) {
+                displayLines(result.responseText);
             });
+        }
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
         }
         function displayLines(json) {
             var obj = JSON.parse(json);
@@ -158,7 +176,13 @@
             //    }
                 
             //});
-            getData($('#time').val());
+            var routeId = getURLParameter('routeId');
+            if (routeId) {
+                getDataByRouteId( routeId, $('#time').val())
+            }
+            else {
+                getData($('#time').val());
+            }
         }
 
         //function getSteps(directionResult) {
